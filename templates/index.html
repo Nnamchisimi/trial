@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part Number Search</title>
+    <title>Part Details Lookup</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .container { width: 80%; margin: auto; padding: 20px; }
@@ -17,39 +17,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>Search for Customer info</h1>
+        <h1>Kombos Otomotiv</h1>
         <form method="post">
             <div class="form-group">
-                <label for="Customer_info">Enter Customer info:</label>
-                <input type="text" id="Customer_info" name="Customer_info" required>
+                <label for="search_query">Enter Customer info, Part number, or Backorder:</label>
+                <input type="text" id="search_query" name="search_query" required>
             </div>
             <input type="submit" value="Search">
         </form>
 
-        {% if part_details is not none %}
-        {% if part_details.shape[0] > 0 %}
-        <h2>Part Number Details:</h2>
-        <table>
-            <thead>
-                <tr>
-                    {% for col in part_details.columns %}
-                    <th>{{ col }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for index, row in part_details.iterrows() %}
-                <tr>
-                    {% for col in part_details.columns %}
-                    <td>{{ row[col] }}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p>No details found for the entered PN ordered.</p>
-        {% endif %}
+        {% if part_details %}
+            {{ part_details|safe }}
+        {% elif no_details_found %}
+            <p>No details found for the entered criteria.</p>
         {% endif %}
     </div>
 </body>
