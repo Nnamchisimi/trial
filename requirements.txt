@@ -1,0 +1,7 @@
+Flask==2.1.2
+pandas==1.4.3
+openpyxl==3.0.9
+Werkzeug==2.0.3
+Jinja2==3.0.3
+Click==8.0.3
+numpy==1.21.6
