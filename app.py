@@ -84,7 +84,7 @@ if __name__ == '__main__':
     server_thread.start()
 
     # Allow some time for the server to start before opening the browser
-    time.sleep(5)  # Increased sleep time
+    time.sleep(1)  # Increased sleep time
 
     # Open the browser
     open_browser()
